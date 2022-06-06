@@ -5,7 +5,7 @@ class Transition:
   current_state: string = None
   next_states: list = []
 
-  def __init__(self, current_state, next_states: NextStates):
+  def __init__(self, current_state, next_states: list NextStates):
     self.current_state = current_state
     self.next_states = next_states
 

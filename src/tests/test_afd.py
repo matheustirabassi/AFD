@@ -1,14 +1,13 @@
-from src.main.afd.afd import AFD
+from src.main.model.afd import AFD
 
 # region construct afd test
-
 
 def test_create_afd():
     afd = AFD([], [], {}, None, [])
 
     assert afd.states == []
     assert afd.alphabet == []
-    assert afd.transition == {}
+    assert afd.transitions == {}
     assert afd.initial_state == None
     assert afd.final_states == []
 
@@ -25,7 +24,7 @@ def test_create_afd_with_args():
 
     assert afd.states == expected_states
     assert afd.alphabet == expected_alphabet
-    assert afd.transition == expected_transitions
+    assert afd.transitions == expected_transitions
     assert afd.initial_state == expected_initial_state
     assert afd.final_states == expected_final_state
 

@@ -93,7 +93,6 @@ def test_all_valid_accept():
     string_1 = 'abb'
     string_2 = 'abab'
     string_3 = 'baba'
-
     assert afd.this_string_is_valid(string_0) == True
     assert afd.this_string_is_valid(string_1) == True
     assert afd.this_string_is_valid(string_2) == False

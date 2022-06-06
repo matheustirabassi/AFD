@@ -1,8 +1,7 @@
 import pytest
 from src.main.model.afd import AFD
-import src.main.util.strings as strings
+from src.main.util import strings
 from src.main.util.validation import validate_afd
-
 
 def test_validate_afd_all_valid_sucess():
     alphabet = ['a', 'b', 'c']
@@ -11,7 +10,8 @@ def test_validate_afd_all_valid_sucess():
     initial_state = 'q0'
     final_state = ['q1']
 
-    assert validate_afd(AFD(alphabet, states, transitions, initial_state, final_state)) == True
+    assert validate_afd(AFD(alphabet, states, transitions,
+                        initial_state, final_state)) == True
 
 
 def test_validate_afd_alphet_bigger_5_error():
@@ -61,9 +61,10 @@ def test_validate_afd_initial_state_not_in_states_error():
     states = ['q0', 'q1']
     transitions = {'q0': {'a': 'q1'}}
     initial_state = 'q2'
-    
+
     with pytest.raises(Exception) as exception_info:
-        validate_afd(AFD(alphabet=alphabet, states=states, transitions=transitions,initial_state=initial_state, final_states = []))
+        validate_afd(AFD(alphabet=alphabet, states=states, transitions=transitions,
+                     initial_state=initial_state, final_states=[]))
 
     expected_error = strings.initial_state_error
     assert exception_info.value.args[0] == expected_error

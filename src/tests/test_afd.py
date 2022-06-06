@@ -30,7 +30,8 @@ def test_create_afd_with_args():
 
 # endregion
 
-## region this_string_is_valid
+# region this_string_is_valid
+
 
 def create_mock_afd():
     expected_alphabet = ['a', 'b']
@@ -41,17 +42,20 @@ def create_mock_afd():
     expected_final_state = ['q1']
     return AFD(expected_alphabet, expected_states, expected_transitions, expected_initial_state, expected_final_state)
 
+
 def test_string_a_accept():
     afd = create_mock_afd()
     expected_result = True
 
     assert afd.this_string_is_valid('a') == expected_result
 
-def test_string_aa_acept():
+
+def test_string_aa_accept():
     afd = create_mock_afd()
     expected_result = False
 
     assert afd.this_string_is_valid('ab') == expected_result
+
 
 def test_string_b_refuse():
     afd = create_mock_afd()
@@ -59,10 +63,32 @@ def test_string_b_refuse():
 
     assert afd.this_string_is_valid('b') == expected_result
 
+
 def test_string_ab_refuse():
     afd = create_mock_afd()
     expected_result = False
 
     assert afd.this_string_is_valid('ab') == expected_result
 
-## endregion
+def test_all_valid_accept():
+    alphabet = ['a', 'b']
+    states = ['q0', 'q1', 'q2']
+    transitions = {
+        'q0': {'a': 'q1'},
+        'q0': {'b': 'q1'},
+        'q1': {'a': 'q2'},
+    }
+    initial_state = 'q0'
+    final_state =['q2']
+
+    afd = AFD(alphabet, states, transitions, initial_state, final_state)
+
+    string_0 = 'aa'
+    string_1 = 'ba'
+    string_2 = 'bb'
+
+    assert afd.this_string_is_valid(string_0) == True
+    assert afd.this_string_is_valid(string_1) == True
+    assert afd.this_string_is_valid(string_2) == False
+
+# endregion

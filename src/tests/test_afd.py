@@ -5,11 +5,11 @@ from src.main.model.afd import AFD
 def test_create_afd():
     afd = AFD([], [], {}, None, [])
 
-    assert afd.states == []
-    assert afd.alphabet == []
-    assert afd.transitions == {}
-    assert afd.initial_state == None
-    assert afd.final_states == []
+    assert afd.states() == []
+    assert afd.alphabet() == []
+    assert afd.transitions() == {}
+    assert afd.initial_state() == None
+    assert afd.final_states() == []
 
 
 def test_create_afd_with_args():
@@ -22,11 +22,11 @@ def test_create_afd_with_args():
     afd = AFD(expected_alphabet, expected_states, expected_transitions,
               expected_initial_state, expected_final_state)
 
-    assert afd.states == expected_states
-    assert afd.alphabet == expected_alphabet
-    assert afd.transitions == expected_transitions
-    assert afd.initial_state == expected_initial_state
-    assert afd.final_states == expected_final_state
+    assert afd.states() == expected_states
+    assert afd.alphabet() == expected_alphabet
+    assert afd.transitions() == expected_transitions
+    assert afd.initial_state() == expected_initial_state
+    assert afd.final_states() == expected_final_state
 
 # endregion
 
@@ -73,15 +73,14 @@ def test_string_ab_refuse():
 def test_all_valid_accept():
     alphabet = ['a', 'b']
     states = ['q0', 'q1', 'q2']
-    transitions = {
-        'q0': {'a': 'q1'},
-        'q0': {'b': 'q1'},
-        'q1': {'a': 'q2'},
-    }
     initial_state = 'q0'
     final_state =['q2']
 
-    afd = AFD(alphabet, states, transitions, initial_state, final_state)
+    afd = AFD(alphabet, states, initial_state, final_state)
+
+    afd.add_transition('q0', ('a', 'q1'))
+    afd.add_transition('q0', ('b', 'q1'))
+    afd.add_transition('q1', ('a', 'q2'))
 
     string_0 = 'aa'
     string_1 = 'ba'

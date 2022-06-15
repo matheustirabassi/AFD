@@ -3,6 +3,7 @@ from src.main.model.afd import AFD
 from src.main.util import strings
 from src.main.util.validation import validate_afd
 
+
 def test_validate_afd_all_valid_sucess():
     alphabet = ['a', 'b', 'c']
     states = ['q0', 'q1']
@@ -15,6 +16,7 @@ def test_validate_afd_all_valid_sucess():
     afd.add_transition('q1', ('b', 'q1'))
 
     assert validate_afd(afd) == True
+
 
 def test_validate_afd_alphet_bigger_5_error():
     alphabet = ['a', 'b', 'c', 'd', 'e', 'f']

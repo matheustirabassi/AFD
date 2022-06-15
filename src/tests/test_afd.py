@@ -184,6 +184,7 @@ def test_add_transition_symbol_not_in_alphabet_error():
     expected_error = strings.symbol_isnt_alphabet
     assert exception_info.value.args[0] == expected_error
 
+
 def test_add_transition_all_valid_success():
     alphabet = ['a', 'b']
     states = ['q0', 'q1']
@@ -200,6 +201,7 @@ def test_add_transition_all_valid_success():
 # endregion
 
 # region transitions_size tests
+
 
 def test_transitions_size_2_transitions_return_size_2():
     afd = create_mock_afd()

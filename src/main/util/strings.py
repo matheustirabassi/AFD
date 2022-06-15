@@ -6,4 +6,5 @@ initial_state_error = 'O estado inicial deve fazer parte de um estado existente.
 final_state_error = 'Deve haver no máximo 10 estados finais.'
 state_isnt_states = 'O estado não faz parte da lista de estados declarados.'
 symbol_isnt_alphabet = 'O simbolo não faz parte do alfabeto declarado.'
-
+accept = 'Aceita'
+refuse = 'Rejeita'

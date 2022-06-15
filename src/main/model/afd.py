@@ -1,7 +1,6 @@
-from dataclasses import dataclass
 import string
-
 from src.main.util import strings
+
 
 class AFD:
     """
@@ -57,11 +56,11 @@ class AFD:
         return self.__transitions
 
     def transitions_size(self):
-        '''
+        """
         Retorna a quantidade de transiçòes.
-        '''
+        """
 
-        transitions_size = 0
+        transitions_size: int = 0
         for transition in self.__transitions:
          transitions_size += self.__transitions[transition].__len__()
 

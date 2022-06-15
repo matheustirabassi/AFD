@@ -34,12 +34,18 @@ class AFD:
     A lista de estados finais.
     '''
 
+
     def __init__(self, alphabet: list, states: list, initial_state: string,
                  final_states: list):
+        """
+        construtor da classe, também faz a função de limpar os atributos do objeto.
+        """
+
         self.__alphabet = alphabet
         self.__states = states
         self.__initial_state = initial_state
         self.__final_states = final_states
+        self.__transitions = {}
 
     def alphabet(self):
         return self.__alphabet
@@ -49,6 +55,17 @@ class AFD:
 
     def transitions(self):
         return self.__transitions
+
+    def transitions_size(self):
+        '''
+        Retorna a quantidade de transiçòes.
+        '''
+
+        transitions_size = 0
+        for transition in self.__transitions:
+         transitions_size += self.__transitions[transition].__len__()
+
+        return transitions_size
 
     def initial_state(self):
         return self.__initial_state
@@ -72,14 +89,14 @@ class AFD:
         >>> add_transition('q1', ('a', 'q2'))
         """
 
-        if state not in self.__states:
+        if not state in self.__states:
              raise(Exception(strings.state_isnt_states))
 
-        if transition[1] not in self.__states:
+        if not transition[1] in self.__states:
              raise(Exception(strings.state_isnt_states))
 
-        if transition[0] not in self.__alphabet:
-            raise(Exception(strings.state_isnt_states))
+        if not transition[0] in self.__alphabet:
+            raise(Exception(strings.symbol_isnt_alphabet))
 
         if not self.__transitions.__contains__(state):
             self.__transitions[state] = []
@@ -110,8 +127,8 @@ class AFD:
         current_state = self.__initial_state
 
         for character in string:
-            if self.__transitions[current_state].__constains__(character):
-                current_state = self.__transitions[current_state][character]
-            else:
-                return False
+            for transition in self.__transitions[current_state]:
+                if character in transition[0]:
+                    current_state = transition[1]
+
         return current_state in self.__final_states

@@ -36,7 +36,7 @@ class AFD:
     def __init__(self, alphabet: list, states: list, initial_state: string,
                  final_states: list):
         """
-        construtor da classe, também faz a função de limpar os atributos do objeto.
+        construtor da classe, também faz a função de instanciar os atributos do objeto.
         """
 
         self.__alphabet = alphabet

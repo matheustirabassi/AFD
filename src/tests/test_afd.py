@@ -94,7 +94,7 @@ def test_all_valid_accept():
     assert afd.this_string_is_valid(string_2) == False
 
 
-def test_1_all_valid_Success():
+def test_1_all_valid_success():
     alphabet = ['a', 'b']
     states = ['q0', 'q1', 'q2', 'qf']
     initial_state = 'q0'
@@ -122,7 +122,7 @@ def test_1_all_valid_Success():
     assert afd.this_string_is_valid(string_3) == False
 
 
-def test_2_all_valid_Success():
+def test_2_all_valid_success():
     alphabet = ['a', 'b']
     states = ['q0', 'q1', 'q2', 'q3']
     initial_state = 'q0'
